@@ -1,0 +1,253 @@
+/* INVENTÁRIO */
+
+#inventory{
+
+    position:fixed;
+
+    bottom:20px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:760px;
+
+    padding:20px;
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(30,30,30,0.92),
+        rgba(8,8,8,0.92)
+    );
+
+    backdrop-filter:blur(10px);
+
+    border:
+    2px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+    0 0 40px rgba(0,0,0,0.5);
+
+    z-index:300;
+
+}
+
+/* HOTBAR */
+
+#hotbar{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+}
+
+/* SLOT */
+
+.slot{
+
+    width:72px;
+    height:72px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(80,80,80,0.4),
+        rgba(20,20,20,0.4)
+    );
+
+    border:
+    2px solid rgba(255,255,255,0.08);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+    transition:0.2s;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+}
+
+.slot:hover{
+
+    transform:
+    translateY(-4px)
+    scale(1.05);
+
+    border:
+    2px solid rgba(255,255,255,0.25);
+
+}
+
+.slot img{
+
+    width:64px;
+    height:64px;
+
+    image-rendering:pixelated;
+
+}
+
+/* SLOT SELECIONADO */
+
+.selectedSlot{
+
+    border:
+    3px solid #ffd500;
+
+    box-shadow:
+    0 0 20px rgba(255,213,0,0.6);
+
+}
+
+/* QUANTIDADE */
+
+.itemAmount{
+
+    position:absolute;
+
+    right:6px;
+    bottom:4px;
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    text-shadow:
+    0 0 5px black;
+
+}
+
+/* CRAFTING */
+
+#craftingContainer{
+
+    margin-top:20px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+}
+
+/* GRID CRAFT */
+
+#craftGrid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(3, 72px);
+
+    gap:10px;
+
+}
+
+/* RESULTADO */
+
+#craftResult{
+
+    width:90px;
+    height:90px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(60,60,60,0.4),
+        rgba(15,15,15,0.4)
+    );
+
+    border:
+    2px solid rgba(255,255,255,0.08);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+}
+
+/* RECEITAS */
+
+#recipes{
+
+    flex:1;
+
+    background:
+    rgba(255,255,255,0.03);
+
+    border-radius:18px;
+
+    padding:15px;
+
+    overflow-y:auto;
+
+    max-height:260px;
+
+}
+
+/* RECEITA */
+
+.recipe{
+
+    padding:12px;
+
+    margin-bottom:10px;
+
+    border-radius:14px;
+
+    background:
+    rgba(255,255,255,0.04);
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+    color:white;
+
+}
+
+.recipe:hover{
+
+    background:
+    rgba(255,255,255,0.08);
+
+    transform:scale(1.02);
+
+}
+
+/* SCROLL */
+
+#recipes::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+#recipes::-webkit-scrollbar-thumb{
+
+    background:#555;
+
+    border-radius:10px;
+
+}

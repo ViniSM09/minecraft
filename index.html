@@ -1,84 +1,846 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-  <title>MiniCraft Survival</title>
+    <meta
+    name="viewport"
+    content="
+    width=device-width,
+    initial-scale=1.0
+    ">
 
-  <link rel="stylesheet" href="style.css">
+    <title>
+        MiniCraft RTX
+    </title>
+
+    <!-- ========================= -->
+    <!-- CSS -->
+    <!-- ========================= -->
+
+    <link
+    rel="stylesheet"
+    href="css/style.css">
+
+    <link
+    rel="stylesheet"
+    href="css/hud.css">
+
+    <link
+    rel="stylesheet"
+    href="css/inventory.css">
+
+    <link
+    rel="stylesheet"
+    href="css/menu.css">
+
+    <!-- ========================= -->
+    <!-- FONTES -->
+    <!-- ========================= -->
+
+    <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com">
+
+    <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+
+    <link
+    href="
+    https://fonts.googleapis.com/css2?
+    family=Inter:wght@300;400;500;700;900&
+    display=swap
+    "
+    rel="stylesheet">
 
 </head>
+
 <body>
 
-<!-- HUD -->
+    <!-- ========================= -->
+    <!-- LOADING -->
+    <!-- ========================= -->
 
-<div id="hud">
+    <div id="loadingScreen">
 
-  <div class="hudBox">
-    ❤️ Vida:
-    <span id="health">100</span>
-  </div>
+        <div id="loadingLogo">
 
-  <div class="hudBox">
-    🍖 Fome:
-    <span id="hunger">100</span>
-  </div>
+            MINICRAFT RTX
 
-  <div class="hudBox">
-    🪵 Madeira:
-    <span id="wood">0</span>
-  </div>
+        </div>
 
-  <div class="hudBox">
-    🪨 Pedra:
-    <span id="stone">0</span>
-  </div>
+        <div class="loadingSub">
 
-</div>
+            Gerando mundo procedural...
 
-<!-- BOTÕES -->
+        </div>
 
-<div id="controls">
+        <div class="loadingBar">
 
-  <button onclick="equipTool('hand')">
-    Mão
-  </button>
+            <div
+            id="loadingFill">
 
-  <button onclick="equipTool('axe')">
-    Machado
-  </button>
+            </div>
 
-  <button onclick="equipTool('pickaxe')">
-    Picareta
-  </button>
+        </div>
 
-  <button onclick="craftHouse()">
-    Construir Casa
-  </button>
+        <div id="loadingText">
 
-  <button onclick="spawnZombie()">
-    Spawnar Zumbi
-  </button>
+            Carregando shaders...
 
-</div>
+        </div>
 
-<!-- INVENTÁRIO -->
+    </div>
 
-<div id="inventory">
+    <!-- ========================= -->
+    <!-- MENU PRINCIPAL -->
+    <!-- ========================= -->
 
-  <h2>Inventário</h2>
+    <div id="mainMenu">
 
-  <div id="inventoryItems"></div>
+        <div id="menuBackground"></div>
 
-</div>
+        <div id="menuContainer">
 
-<!-- CANVAS -->
+            <div id="gameTitle">
 
-<canvas id="game"></canvas>
+                MINICRAFT RTX
 
-<script src="script.js"></script>
+            </div>
+
+            <div id="menuSubtitle">
+
+                Sandbox Voxel Engine
+
+            </div>
+
+            <button
+            class="menuButton"
+            id="playButton">
+
+                Jogar
+
+            </button>
+
+            <button
+            class="menuButton"
+            id="multiplayerButton">
+
+                Multiplayer
+
+            </button>
+
+            <button
+            class="menuButton"
+            id="settingsButton">
+
+                Configurações
+
+            </button>
+
+            <button
+            class="menuButton"
+            id="saveButton">
+
+                Salvar Mundo
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- MENU PAUSE -->
+    <!-- ========================= -->
+
+    <div id="pauseMenu">
+
+        <div class="pauseContainer">
+
+            <div class="pauseTitle">
+
+                PAUSADO
+
+            </div>
+
+            <button
+            class="menuButton"
+            id="resumeButton">
+
+                Continuar
+
+            </button>
+
+            <button
+            class="menuButton"
+            id="savePauseButton">
+
+                Salvar
+
+            </button>
+
+            <button
+            class="menuButton"
+            id="exitButton">
+
+                Sair
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- CONFIGURAÇÕES -->
+    <!-- ========================= -->
+
+    <div id="settingsPanel">
+
+        <div class="settingsTitle">
+
+            CONFIGURAÇÕES
+
+        </div>
+
+        <!-- SENS -->
+
+        <div class="settingItem">
+
+            <label>
+
+                Sensibilidade
+
+            </label>
+
+            <input
+            type="range"
+            min="1"
+            max="100"
+            value="25"
+            class="settingSlider"
+            id="sensitivitySlider">
+
+        </div>
+
+        <!-- RENDER -->
+
+        <div class="settingItem">
+
+            <label>
+
+                Render Distance
+
+            </label>
+
+            <input
+            type="range"
+            min="2"
+            max="16"
+            value="5"
+            class="settingSlider"
+            id="renderSlider">
+
+        </div>
+
+        <!-- SHADOW -->
+
+        <div class="settingItem">
+
+            <label>
+
+                Qualidade Sombras
+
+            </label>
+
+            <input
+            type="range"
+            min="512"
+            max="4096"
+            step="512"
+            value="2048"
+            class="settingSlider"
+            id="shadowSlider">
+
+        </div>
+
+        <!-- FOV -->
+
+        <div class="settingItem">
+
+            <label>
+
+                Campo de Visão
+
+            </label>
+
+            <input
+            type="range"
+            min="60"
+            max="120"
+            value="75"
+            class="settingSlider"
+            id="fovSlider">
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- DEBUG -->
+    <!-- ========================= -->
+
+    <div id="debugPanel">
+
+        <div id="fpsCounter">
+
+            FPS: 0
+
+        </div>
+
+        <div id="coords">
+
+            X:0 Y:0 Z:0
+
+        </div>
+
+        <div id="chunkInfo">
+
+            Chunks: 0
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- MINIMAP -->
+    <!-- ========================= -->
+
+    <canvas
+    id="minimap">
+
+    </canvas>
+
+    <!-- ========================= -->
+    <!-- HOTBAR -->
+    <!-- ========================= -->
+
+    <div id="hotbar">
+
+        <div class="slot selectedSlot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- INVENTÁRIO -->
+    <!-- ========================= -->
+
+    <div id="inventory">
+
+        <div id="inventoryTitle">
+
+            INVENTÁRIO
+
+        </div>
+
+        <!-- PLAYER -->
+
+        <div id="playerPreview">
+
+            <div id="playerModel">
+
+            </div>
+
+        </div>
+
+        <!-- GRID -->
+
+        <div id="inventoryGrid">
+
+        </div>
+
+        <!-- CRAFT -->
+
+        <div id="craftingSection">
+
+            <div id="craftTitle">
+
+                Crafting
+
+            </div>
+
+            <div id="craftGrid">
+
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+
+                <div class="slot"></div>
+                <div class="slot"></div>
+                <div class="slot"></div>
+
+            </div>
+
+            <div id="craftArrow">
+
+                →
+
+            </div>
+
+            <div id="craftResult">
+
+            </div>
+
+        </div>
+
+        <!-- RECEITAS -->
+
+        <div id="recipes">
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- NOTIFICAÇÕES -->
+    <!-- ========================= -->
+
+    <div id="notifications">
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- CROSSHAIR -->
+    <!-- ========================= -->
+
+    <div id="crosshair">
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- AUDIO -->
+    <!-- ========================= -->
+
+    <audio
+    id="ambientMusic"
+    loop>
+
+        <source
+        src="audio/music/ambient.mp3"
+        type="audio/mpeg">
+
+    </audio>
+
+    <audio id="breakSound">
+
+        <source
+        src="audio/sfx/break.mp3"
+        type="audio/mpeg">
+
+    </audio>
+
+    <audio id="placeSound">
+
+        <source
+        src="audio/sfx/place.mp3"
+        type="audio/mpeg">
+
+    </audio>
+
+    <!-- ========================= -->
+    <!-- THREE JS -->
+    <!-- ========================= -->
+
+    <script src="
+    https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js
+    "></script>
+
+    <!-- ========================= -->
+    <!-- POINTER LOCK -->
+    <!-- ========================= -->
+
+    <script src="
+    https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/controls/PointerLockControls.js
+    "></script>
+
+    <!-- ========================= -->
+    <!-- POST PROCESSING -->
+    <!-- ========================= -->
+
+    <script src="
+    https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/EffectComposer.js
+    "></script>
+
+    <script src="
+    https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/RenderPass.js
+    "></script>
+
+    <script src="
+    https://cdn.jsdelivr.net/npm/three@0.160.0/examples/js/postprocessing/UnrealBloomPass.js
+    "></script>
+
+    <!-- ========================= -->
+    <!-- STATS FPS -->
+    <!-- ========================= -->
+
+    <script src="
+    https://cdnjs.cloudflare.com/ajax/libs/stats.js/r17/Stats.min.js
+    "></script>
+
+    <!-- ========================= -->
+    <!-- NOISE -->
+    <!-- ========================= -->
+
+    <script src="
+    https://cdn.jsdelivr.net/npm/simplex-noise@4.0.1/dist/umd/simplex-noise.min.js
+    "></script>
+
+    <!-- ========================= -->
+    <!-- JAVASCRIPT ENGINE -->
+    <!-- ========================= -->
+
+    <script src="js/engine.js"></script>
+
+    <script src="js/renderer.js"></script>
+
+    <script src="js/blocks.js"></script>
+
+    <script src="js/world.js"></script>
+
+    <script src="js/chunks.js"></script>
+
+    <script src="js/player.js"></script>
+
+    <script src="js/camera.js"></script>
+
+    <script src="js/controls.js"></script>
+
+    <script src="js/ui.js"></script>
+
+    <script src="js/save.js"></script>
+
+    <script src="js/zombies.js"></script>
+
+    <script src="js/main.js"></script>
+
+    <!-- ========================= -->
+    <!-- MENU SYSTEM -->
+    <!-- ========================= -->
+
+    <script>
+
+        let paused = false;
+
+        const mainMenu =
+        document.getElementById(
+            'mainMenu'
+        );
+
+        const pauseMenu =
+        document.getElementById(
+            'pauseMenu'
+        );
+
+        const inventory =
+        document.getElementById(
+            'inventory'
+        );
+
+        const loadingFill =
+        document.getElementById(
+            'loadingFill'
+        );
+
+        const loadingText =
+        document.getElementById(
+            'loadingText'
+        );
+
+        /* ===================== */
+        /* LOADING */
+        /* ===================== */
+
+        let loadingProgress = 0;
+
+        const loadingMessages = [
+
+            'Gerando terreno...',
+            'Criando chunks...',
+            'Compilando shaders...',
+            'Gerando iluminação...',
+            'Spawnando entidades...',
+            'Carregando texturas...',
+            'Inicializando física...',
+            'Preparando mundo...'
+
+        ];
+
+        const loadingInterval =
+        setInterval(() => {
+
+            loadingProgress += 2;
+
+            loadingFill.style.width =
+            `${loadingProgress}%`;
+
+            const randomMessage =
+
+            loadingMessages[
+                Math.floor(
+                    Math.random()
+                    *
+                    loadingMessages.length
+                )
+            ];
+
+            loadingText.innerText =
+            randomMessage;
+
+            if(
+                loadingProgress >= 100
+            ){
+
+                clearInterval(
+                    loadingInterval
+                );
+
+                setTimeout(() => {
+
+                    document
+                    .getElementById(
+                        'loadingScreen'
+                    )
+
+                    .style.display =
+                    'none';
+
+                }, 500);
+
+            }
+
+        }, 50);
+
+        /* ===================== */
+        /* PLAY */
+        /* ===================== */
+
+        document
+        .getElementById(
+            'playButton'
+        )
+
+        .addEventListener(
+            'click',
+            () => {
+
+                mainMenu.style.display =
+                'none';
+
+                document.body
+                .requestPointerLock();
+
+                const music =
+                document.getElementById(
+                    'ambientMusic'
+                );
+
+                music.volume = 0.35;
+
+                music.play();
+
+            }
+        );
+
+        /* ===================== */
+        /* PAUSE */
+        /* ===================== */
+
+        document.addEventListener(
+            'keydown',
+            e => {
+
+                if(
+                    e.key === 'Escape'
+                ){
+
+                    paused = !paused;
+
+                    pauseMenu.style.display =
+
+                    paused
+                    ?
+                    'flex'
+                    :
+                    'none';
+
+                }
+
+                if(
+                    e.key.toLowerCase()
+                    === 'e'
+                ){
+
+                    if(
+                        inventory.style.display
+                        === 'flex'
+                    ){
+
+                        inventory.style.display =
+                        'none';
+
+                    }
+
+                    else{
+
+                        inventory.style.display =
+                        'flex';
+
+                    }
+
+                }
+
+            }
+        );
+
+        /* ===================== */
+        /* CONTINUAR */
+        /* ===================== */
+
+        document
+        .getElementById(
+            'resumeButton'
+        )
+
+        .addEventListener(
+            'click',
+            () => {
+
+                paused = false;
+
+                pauseMenu.style.display =
+                'none';
+
+                document.body
+                .requestPointerLock();
+
+            }
+        );
+
+        /* ===================== */
+        /* SALVAR */
+        /* ===================== */
+
+        document
+        .getElementById(
+            'saveButton'
+        )
+
+        .addEventListener(
+            'click',
+            () => {
+
+                saveGame();
+
+            }
+        );
+
+        /* ===================== */
+        /* SETTINGS */
+        /* ===================== */
+
+        document
+        .getElementById(
+            'sensitivitySlider'
+        )
+
+        .addEventListener(
+            'input',
+            e => {
+
+                mouseSensitivity =
+                e.target.value
+                * 0.0001;
+
+            }
+        );
+
+        document
+        .getElementById(
+            'renderSlider'
+        )
+
+        .addEventListener(
+            'input',
+            e => {
+
+                window.RENDER_DISTANCE =
+                Number(
+                    e.target.value
+                );
+
+            }
+        );
+
+        document
+        .getElementById(
+            'shadowSlider'
+        )
+
+        .addEventListener(
+            'input',
+            e => {
+
+                sun.shadow.mapSize.width =
+                Number(
+                    e.target.value
+                );
+
+                sun.shadow.mapSize.height =
+                Number(
+                    e.target.value
+                );
+
+            }
+        );
+
+        document
+        .getElementById(
+            'fovSlider'
+        )
+
+        .addEventListener(
+            'input',
+            e => {
+
+                camera.fov =
+                Number(
+                    e.target.value
+                );
+
+                camera.updateProjectionMatrix();
+
+            }
+        );
+
+    </script>
 
 </body>
+
 </html>

@@ -1,0 +1,154 @@
+/* HUD PRINCIPAL */
+
+#hud{
+
+    position:fixed;
+
+    top:15px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    gap:15px;
+
+    z-index:200;
+
+}
+
+/* BOXES */
+
+.hudBox{
+
+    min-width:140px;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(35,35,35,0.85),
+        rgba(10,10,10,0.85)
+    );
+
+    border:
+    2px solid rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-weight:700;
+
+    font-size:18px;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:8px;
+
+    backdrop-filter:blur(8px);
+
+    box-shadow:
+    0 0 20px rgba(0,0,0,0.5),
+    inset 0 0 15px rgba(255,255,255,0.04);
+
+}
+
+/* VIDA */
+
+#health{
+
+    color:#ff4a4a;
+
+    text-shadow:
+    0 0 10px rgba(255,0,0,0.7);
+
+}
+
+/* FOME */
+
+#hunger{
+
+    color:#ffb347;
+
+}
+
+/* XP */
+
+#xp{
+
+    color:#57c7ff;
+
+}
+
+/* BARRA DE XP */
+
+#xpBarContainer{
+
+    position:fixed;
+
+    bottom:90px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:500px;
+    height:18px;
+
+    background:#111;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    z-index:200;
+
+    border:
+    2px solid rgba(255,255,255,0.08);
+
+}
+
+#xpBar{
+
+    width:0%;
+
+    height:100%;
+
+    background:
+    linear-gradient(
+        90deg,
+        #00aaff,
+        #69d9ff
+    );
+
+    transition:0.2s;
+
+}
+
+/* DEBUG */
+
+#coords{
+
+    position:fixed;
+
+    top:15px;
+    right:15px;
+
+    color:white;
+
+    background:
+    rgba(0,0,0,0.55);
+
+    padding:12px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    z-index:200;
+
+}
