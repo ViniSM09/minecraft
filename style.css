@@ -1,0 +1,156 @@
+* {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+}
+
+body {
+
+  overflow: hidden;
+
+  font-family: Arial;
+
+  background: #222;
+
+  color: white;
+
+}
+
+/* HUD */
+
+#hud {
+
+  position: fixed;
+
+  top: 0;
+
+  width: 100%;
+
+  display: flex;
+
+  gap: 10px;
+
+  padding: 10px;
+
+  background: rgba(0,0,0,0.5);
+
+  backdrop-filter: blur(5px);
+
+  z-index: 10;
+
+}
+
+.hudBox {
+
+  background: rgba(255,255,255,0.1);
+
+  padding: 10px 15px;
+
+  border-radius: 10px;
+
+  border: 2px solid rgba(255,255,255,0.1);
+
+}
+
+/* CONTROLES */
+
+#controls {
+
+  position: fixed;
+
+  top: 70px;
+
+  left: 10px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  z-index: 10;
+
+}
+
+button {
+
+  padding: 12px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #4caf50;
+
+  color: white;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+
+}
+
+button:hover {
+
+  transform: scale(1.05);
+
+}
+
+/* INVENTÁRIO */
+
+#inventory {
+
+  position: fixed;
+
+  right: 10px;
+
+  top: 70px;
+
+  width: 220px;
+
+  background: rgba(0,0,0,0.5);
+
+  backdrop-filter: blur(5px);
+
+  padding: 15px;
+
+  border-radius: 15px;
+
+  z-index: 10;
+
+}
+
+#inventory h2 {
+
+  margin-bottom: 10px;
+
+}
+
+#inventoryItems {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+
+}
+
+/* CANVAS */
+
+#game {
+
+  display: block;
+
+  background: linear-gradient(
+    #87ceeb 0%,
+    #87ceeb 50%,
+    #5fa85f 50%,
+    #5fa85f 100%
+  );
+
+}

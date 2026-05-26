@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MiniCraft Survival</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- HUD -->
+
+<div id="hud">
+
+  <div class="hudBox">
+    ❤️ Vida:
+    <span id="health">100</span>
+  </div>
+
+  <div class="hudBox">
+    🍖 Fome:
+    <span id="hunger">100</span>
+  </div>
+
+  <div class="hudBox">
+    🪵 Madeira:
+    <span id="wood">0</span>
+  </div>
+
+  <div class="hudBox">
+    🪨 Pedra:
+    <span id="stone">0</span>
+  </div>
+
+</div>
+
+<!-- BOTÕES -->
+
+<div id="controls">
+
+  <button onclick="equipTool('hand')">
+    Mão
+  </button>
+
+  <button onclick="equipTool('axe')">
+    Machado
+  </button>
+
+  <button onclick="equipTool('pickaxe')">
+    Picareta
+  </button>
+
+  <button onclick="craftHouse()">
+    Construir Casa
+  </button>
+
+  <button onclick="spawnZombie()">
+    Spawnar Zumbi
+  </button>
+
+</div>
+
+<!-- INVENTÁRIO -->
+
+<div id="inventory">
+
+  <h2>Inventário</h2>
+
+  <div id="inventoryItems"></div>
+
+</div>
+
+<!-- CANVAS -->
+
+<canvas id="game"></canvas>
+
+<script src="script.js"></script>
+
+</body>
+</html>
