@@ -152,3 +152,45 @@ function unloadFarChunks(){
     }
 
 }
+function updateChunks(){
+
+    if(!player){
+        return;
+    }
+
+    const currentChunkX =
+    Math.floor(
+        player.position.x /
+        CHUNK_SIZE
+    );
+
+    const currentChunkZ =
+    Math.floor(
+        player.position.z /
+        CHUNK_SIZE
+    );
+
+    for(
+        let x = currentChunkX - RENDER_DISTANCE;
+        x <= currentChunkX + RENDER_DISTANCE;
+        x++
+    ){
+
+        for(
+            let z = currentChunkZ - RENDER_DISTANCE;
+            z <= currentChunkZ + RENDER_DISTANCE;
+            z++
+        ){
+
+            generateChunk(
+                x,
+                z
+            );
+
+        }
+
+    }
+
+    unloadFarChunks();
+
+}
